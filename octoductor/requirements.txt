@@ -1,0 +1,13 @@
+Flask==1.1.2
+serverless_wsgi==1.7.6
+markupsafe==1.1.1
+dataclasses-json==0.5.2
+slack-sdk==3.2.0
+cryptography==3.3.1
+pycryptodome==3.9.9
+pycryptodomex==3.9.9
+PyJWT==2.0.1
+requests==2.25.0
+pybadges==2.2.1
+pydantic==1.7.3
+PyYAML==5.4.1

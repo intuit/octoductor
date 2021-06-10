@@ -1,0 +1,17 @@
+{
+    "repositories": [
+        {
+            "org": "intuit",
+            "repo": "octoductor",
+            "private": false,
+            "reference": "v0.0.1",
+            "pull_request_number": null,
+            "default_branch": "master",
+            "language": null
+        }
+    ],
+    "sender": "jdoe",
+    "correlation_id": "",
+    "ts": "2021-02-12T02:44:00+00:00",
+    "trigger": 1
+}

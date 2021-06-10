@@ -1,0 +1,19 @@
+{
+    "token": "atoken",
+    "expires_at": "2021-02-20T06:04:03Z",
+    "permissions": {
+      "checks": "write",
+      "contents": "read",
+      "deployments": "read",
+      "issues": "write",
+      "metadata": "read",
+      "pull_requests": "write",
+      "repository_hooks": "write",
+      "repository_pre_receive_hooks": "read",
+      "single_file": "write",
+      "statuses": "read",
+      "vulnerability_alerts": "read"
+    },
+    "repository_selection": "selected",
+    "single_file": "asset.yaml"
+  }

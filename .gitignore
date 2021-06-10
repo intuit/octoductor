@@ -1,0 +1,46 @@
+_site/
+.idea/
+*.lock
+package-lock.json
+.DS_Store
+**/node_modules/
+**/build
+**/build/
+
+# Emacs files
+*~
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+artifacts
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+**/cdk.out
+**/node_modules
+
+# IDEs
+**/.idea
+**/.parcel-cache
+*.iml
+/public-gateway/node_modules/
+
+.coverage
+**/htmlcov/
+.env/
+.vscode/
+**/__pycache__/
+.eggs/
+
+coverage.xml
+.eslintcache
+!octoductor/ui/**/*.js
+/octoductor/ui/build/
+template.yaml
+
+
+octoductor/dist/
+*.tgz
+*.egg-info

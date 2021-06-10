@@ -1,0 +1,7 @@
+coverage:
+  status:
+    patch:
+      default:
+        target: 80%
+comment:
+  layout: "diff, flags, files:10, footer"
