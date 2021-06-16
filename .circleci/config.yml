@@ -29,8 +29,11 @@ jobs:
       - node/install-packages:
            pkg-manager: npm 
       - run:
-          name: Run tests
-          command: make cdk 
+          name: npm install
+          command: npm install
+      - run:
+          name: npx
+          command: npx cdk synth > template.yaml
 
 workflows:
   # Below is the definition of your workflow.
