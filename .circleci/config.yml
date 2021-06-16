@@ -26,7 +26,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: npm install
+      - run: npm install --legacy-peer-deps
       - run: npx cdk synth > template.yaml;
 workflows:
   test_my_app:
