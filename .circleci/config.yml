@@ -11,9 +11,10 @@ jobs:
       - run: python --version
       - run: node --version
       - run: >
-          cd octoductor;
+          pushd octoductor;
           pip install ".[test]";
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
+          popd;
       - run: >
           npm install --legacy-peer-deps
           npx cdk synth > template.yaml
