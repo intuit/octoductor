@@ -16,12 +16,8 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      # Whatever you want to do
-      # - run: sudo apt-get update && sudo apt-get install -y cowsay
-      # - run: cowsay Continuous Integration Rocks!
       - run: docker run hello-world
-  test:
-    working_directory: /output
+  cdk:
     docker:
       - image: cimg/node:16.3.0
     steps:
@@ -32,6 +28,6 @@ jobs:
 workflows:
   test_my_app:
     jobs:
-      - build
+      # - build
       - docker
-      - test
+      - cdk
