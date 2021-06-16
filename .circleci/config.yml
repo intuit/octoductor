@@ -21,9 +21,9 @@ jobs:
       # - run: cowsay Continuous Integration Rocks!
       - run: docker run hello-world
   test:
+    working_directory: /output
     docker:
       - image: cimg/node:16.3.0
-    working_directory: /output
     steps:
       - checkout
       - setup_remote_docker
