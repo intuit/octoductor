@@ -7,9 +7,16 @@ jobs:
       - image: cimg/python:3.9.5-node
     steps:
       - checkout
+      - setup_remote_docker
       - run: python --version
       - run: node --version
-      - run: npx cdk synth > template.yaml;
+      - run: >
+          cd octoductor;
+          pip install ".[test]";
+          py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
+      - run: >
+          npm install --legacy-peer-deps
+          npx cdk synth > template.yaml
   docker:
     docker:
       - image: cimg/base:2021.05
@@ -28,6 +35,6 @@ jobs:
 workflows:
   test_my_app:
     jobs:
-      # - build
-      - docker
-      - cdk
+      - build
+      # - docker
+      # - cdk
