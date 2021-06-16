@@ -9,9 +9,10 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          cache-path: ~/project/node_modules
+          # cache-path: ~/project/node_modules
           override-ci-command: npm install
       - run: npm install
+      - run: npx cdk synth > template.yaml;
 workflows:
   test_my_app:
     jobs:
