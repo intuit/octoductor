@@ -28,4 +28,6 @@ jobs:
 workflows:
   test_my_app:
     jobs:
+      - build
+      - docker
       - test
