@@ -13,7 +13,8 @@ jobs:
     docker:
       - image: cimg/base:2021.05
     steps:
-      # - checkout
+      - checkout
+      - setup_remote_docker
       # Whatever you want to do
       # - run: sudo apt-get update && sudo apt-get install -y cowsay
       # - run: cowsay Continuous Integration Rocks!
