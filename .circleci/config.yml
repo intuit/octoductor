@@ -15,9 +15,9 @@ jobs:
           pip install ".[test]";
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
           popd;
-      - run: >
-          npm install --legacy-peer-deps
-          npx cdk synth > template.yaml
+      # - run: >
+      #     npm install --legacy-peer-deps
+      #     npx cdk synth > template.yaml
   docker:
     docker:
       - image: cimg/base:2021.05
