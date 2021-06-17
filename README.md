@@ -1,4 +1,5 @@
-[![Intuit](https://circleci.com/gh/intuit/octoductor/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/intuit)
+[![Intuit](https://circleci.com/gh/intuit/octoductor/tree/master.svg?style=svg)](https://circleci.com/gh/intuit/octoductor/?branch=master)
+
 
 # Octoductor
 
