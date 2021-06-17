@@ -27,11 +27,16 @@ jobs:
       - run: node --version
       - run: >
           pushd octoductor;
-          pip install ".[test]";
+          pip3 install ".[test]";
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
           popd;
       - run: npm install --legacy-peer-deps
       - run: npx cdk synth > template.yaml
+      - run: >
+          pushd octoductor/ui;
+          npm install;
+          CI=false npx react-scripts build;
+          popd;
   docker:
     docker:
       - image: cimg/base:2021.05
@@ -50,7 +55,7 @@ jobs:
 workflows:
   test_my_app:
     jobs:
-      - build
+      # - build
       - buildmachine
       # - docker
       # - cdk
