@@ -18,6 +18,20 @@ jobs:
       # - run: >
       #     npm install --legacy-peer-deps
       #     npx cdk synth > template.yaml
+  buildmachine:
+    machine:
+      image: ubuntu-1604:202007-01
+    steps:
+      - checkout
+      - run: python --version
+      - run: node --version
+      - run: >
+          pushd octoductor;
+          pip install ".[test]";
+          py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
+          popd;
+      - run: npm install --legacy-peer-deps
+      - run: npx cdk synth > template.yaml
   docker:
     docker:
       - image: cimg/base:2021.05
@@ -37,5 +51,6 @@ workflows:
   test_my_app:
     jobs:
       - build
+      - buildmachine
       # - docker
       # - cdk
