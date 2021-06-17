@@ -2,22 +2,6 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: '2.1'
 jobs:
-  build:
-    docker:
-      - image: cimg/python:3.7.9-node
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: python --version
-      - run: node --version
-      - run: >
-          pushd octoductor;
-          pip install ".[test]";
-          py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
-          popd;
-      # - run: >
-      #     npm install --legacy-peer-deps
-      #     npx cdk synth > template.yaml
   buildmachine:
     machine:
       image: ubuntu-1604:202007-01
@@ -31,12 +15,12 @@ jobs:
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
           popd;
       - run: npm install --legacy-peer-deps
-      - run: npx cdk synth > template.yaml
       - run: >
           pushd octoductor/ui;
           npm install;
           CI=false npx react-scripts build;
           popd;
+      - run: npx cdk synth > template.yaml
   docker:
     docker:
       - image: cimg/base:2021.05
@@ -44,14 +28,6 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: docker run hello-world
-  cdk:
-    docker:
-      - image: cimg/node:16.3.0
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: npm install --legacy-peer-deps
-      - run: npx cdk synth > template.yaml;
 workflows:
   test_my_app:
     jobs:
