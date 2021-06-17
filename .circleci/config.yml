@@ -2,7 +2,7 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: '2.1'
 jobs:
-  buildmachine:
+  build:
     machine:
       image: ubuntu-1604:202007-01
     steps:
@@ -21,7 +21,7 @@ jobs:
           CI=false npx react-scripts build;
           popd;
       - run: npx cdk synth > template.yaml
-  docker:
+  release:
     docker:
       - image: cimg/base:2021.05
     steps:
@@ -29,9 +29,12 @@ jobs:
       - setup_remote_docker
       - run: docker run hello-world
 workflows:
-  test_my_app:
+  build:
+    when:
+      not: << pipeline.git.tag >>
     jobs:
-      # - build
-      - buildmachine
-      # - docker
-      # - cdk
+      - build
+  release:
+    when: << pipeline.git.tag >>
+    jobs:
+      - release
