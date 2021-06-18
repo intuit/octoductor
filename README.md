@@ -1,4 +1,5 @@
 [![Intuit](https://circleci.com/gh/intuit/octoductor/tree/master.svg?style=svg)](https://circleci.com/gh/intuit/octoductor/?branch=master)
+[![codecov](https://codecov.io/gh/intuit/octoductor/branch/master/graph/badge.svg?token=3I3A2IG0ZP)](https://codecov.io/gh/intuit/octoductor)
 
 
 # Octoductor
