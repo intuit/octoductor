@@ -13,7 +13,7 @@ jobs:
           pushd octoductor;
           pip3 install ".[test]";
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
-          bash <(curl -s https://codecov.io/bash) -t 168e513c-3368-4d26-9359-d43fc71506fe;
+          bash <(curl -s https://codecov.io/bash) -t b422407a-560b-4a21-95c7-d35fa0e9342b;
           popd;
       - run: npm install --legacy-peer-deps
       - run: >
