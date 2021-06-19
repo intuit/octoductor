@@ -9,6 +9,7 @@ jobs:
       - checkout
       - run: python --version
       - run: node --version
+      # Note: the token for the codecov push is obtained as an environment variable set in the CircleCi UI
       - run: >
           pushd octoductor;
           pip3 install ".[test]";
