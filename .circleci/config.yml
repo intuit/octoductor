@@ -5,6 +5,8 @@ jobs:
   build:
     machine:
       image: ubuntu-1604:202007-01
+    environment:
+      CODECOV_TOKEN: b422407a-560b-4a21-95c7-d35fa0e9342b
     steps:
       - checkout
       - run: python --version
@@ -13,7 +15,7 @@ jobs:
           pushd octoductor;
           pip3 install ".[test]";
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
-          bash <(curl -s https://codecov.io/bash) -t b422407a-560b-4a21-95c7-d35fa0e9342b;
+          bash <(curl -s https://codecov.io/bash);
           popd;
       - run: npm install --legacy-peer-deps
       - run: >
