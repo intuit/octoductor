@@ -5,8 +5,6 @@ jobs:
   build:
     machine:
       image: ubuntu-1604:202007-01
-    environment:
-      CODECOV_TOKEN: b422407a-560b-4a21-95c7-d35fa0e9342b
     steps:
       - checkout
       - run: python --version
