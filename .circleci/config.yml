@@ -9,10 +9,12 @@ jobs:
       - checkout
       - run: python --version
       - run: node --version
+      # Note: the token for the codecov push is obtained as an environment variable set in the CircleCi UI
       - run: >
           pushd octoductor;
           pip3 install ".[test]";
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
+          bash <(curl -s https://codecov.io/bash);
           popd;
       - run: npm install --legacy-peer-deps
       - run: >
