@@ -24,8 +24,8 @@ jobs:
           popd;
       - run: >
           npm install
-	        npm run build
-	        npm test
+          npm run build
+          npm test
       - run: npx cdk synth > template.yaml
   release:
     docker:
