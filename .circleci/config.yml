@@ -5,6 +5,8 @@ jobs:
   build:
     machine:
       image: ubuntu-1604:202007-01
+    environment:
+      CDK_OUTDIR: /home/circleci/project/cdk.out
     steps:
       - checkout
       - run: python --version
@@ -14,30 +16,25 @@ jobs:
           pushd octoductor;
           pip3 install ".[test]";
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
-          bash <(curl -s https://codecov.io/bash);
           popd;
-      - run: npm install --legacy-peer-deps
-      - run: >
-          pushd octoductor/ui;
-          npm install;
-          CI=false npx react-scripts build;
-          popd;
+      - run: npm install
+      - run: npm run build
+      - run: npm run test
       - run: npx cdk synth > template.yaml
+      - run: bash <(curl -s https://codecov.io/bash) -cv -f octoductor/coverage.xml -F python
+      - run: bash <(curl -s https://codecov.io/bash) -cv -f .coverage/*.json -F typescript,node
   release:
     docker:
       - image: cimg/python:3.7.9-node
-    environment:
-      # https://circleci.com/docs/2.0/env-vars/#built-in-environment-variables
-      VERSION: CIRCLE_TAG
     steps:
       - checkout
       - run: echo $VERSION
       - run: npm install
       - run: npm run build
-      - run: npm version --no-git-tag-version --allow-same-version $(VERSION)
+      - run: npm version --no-git-tag-version --allow-same-version $(CIRCLE_TAG)
       - run: npm pack
       - run: pip install --upgrade twine setuptools wheel
-      - run: cd octoductor; \
+      - run: cd octoductor
       - run: python setup.py sdist bdist_wheel
 workflows:
   version: 2
