@@ -17,9 +17,7 @@ The benefit we see is enabling contributors to leverage the orchestration layer 
 
 ## What is Octoductor?
 
-Octoductor is an application to standardize and consolidate engineering excellence checks across an organization. Octoductor also provides a UI to visualize and compare GitHub projects based on their engineering excellence score.
-
-![Octoductor UI](docs/assets/demo-dashboard-screenshot.png)
+Octoductor is an application to standardize and consolidate engineering excellence checks across an organization. 
 
 ## Why Octoductor?
 + Organizations can be quite complex and, albeit critical, engineering excellence standards vary
