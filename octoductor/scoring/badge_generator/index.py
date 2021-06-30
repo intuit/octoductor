@@ -2,7 +2,8 @@ import os
 import json
 import time
 import logging
-from common import CollectorResponse, Badge, generate_badge, write_text_to_s3, write_client_evaluations_to_s3
+from common import CollectorResponse, Badge, generate_badge, write_text_to_s3
+from common.utils import write_client_evaluations_to_s3
 
 log_level = os.getenv('LOG_LEVEL', 'INFO')
 logger = logging.getLogger()
@@ -39,7 +40,7 @@ def handler(event, context):
         client.set_rendered_score_badge(score_badge)
 
     write_badges_to_s3(scored_clients, bucket, "badges")
-    write_client_evaluations_to_s3(scored_clients.client_evaluations, bucket, "badge-generator")
+    write_client_evaluations_to_s3(scored_clients.client_evaluations, bucket, "badge_generator")
     return json.loads(scored_clients.to_json())
 
 def write_badges_to_s3(client_collection: CollectorResponse, bucket: str, folder_name: str) -> None:

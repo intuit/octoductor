@@ -9,7 +9,7 @@ export class Badge extends PythonFunction {
 
   constructor(scope: Construct, id: string, common: CommonInfra, memorySize: number = 512, duration: Duration = Duration.seconds(600)) {
     super(scope, id, {
-      entry:  join(__dirname, '..', '..', 'octoductor', 'scoring', 'badge-generator'),
+      entry:  join(__dirname, '..', '..', 'octoductor', 'scoring', 'badge_generator'),
       memorySize: memorySize,
       timeout: duration,
       vpc: common.params.vpc,
