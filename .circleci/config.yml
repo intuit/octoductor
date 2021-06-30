@@ -14,13 +14,13 @@ jobs:
           pushd octoductor;
           pip3 install ".[test]";
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
-          bash <(curl -s https://codecov.io/bash);
           popd;
-      - run: >
-          npm install
-          npm run build
-          npm test
+      - run: npm install
+      - run: npm run build
+      - run: npm test
       - run: npx cdk synth > template.yaml
+      - run: bash <(curl -s https://codecov.tools.a.intuit.com/bash) -cv -f octoductor/coverage.xml -F python
+      - run: bash <(curl -s https://codecov.tools.a.intuit.com/bash) -cv -f .coverage/*.json -F typescript,node
   release:
     docker:
       - image: cimg/python:3.7.9-node
