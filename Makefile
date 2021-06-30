@@ -21,11 +21,6 @@ python:
 	pip install ".[test]"; \
 	py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
 
-ui:
-	cd octoductor/ui; \
-	npm install; \
-	npx react-scripts build;
-
 cdk:
 	npm install
 	npm run build

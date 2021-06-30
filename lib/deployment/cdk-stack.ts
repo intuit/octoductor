@@ -30,13 +30,6 @@ export class OctoductorStack extends Stack {
     const health = new HealthCheck(this, 'health', common.params.vpc, common.securityGroup);
     // Gateways and Lambda integrations
 
-    new BucketDeployment(this, 'dashboard', {
-      sources: [Source.asset(join(__dirname, '..', '..', 'octoductor', 'ui', 'build'))],
-      destinationBucket: common.octoductorBucket,
-      destinationKeyPrefix: 'webapp',
-      prune: false
-    });
-
     const publicGW = new PublicGateway(this, 'public-api', [], common.params.env, common.params.domain, common.params.hostedZone, common.logGroup);
     health.register(publicGW.root);
 

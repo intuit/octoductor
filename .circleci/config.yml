@@ -16,12 +16,6 @@ jobs:
           py.test --cov=. --cov-report term-missing --cov-branch --cov-report=xml -rP;
           bash <(curl -s https://codecov.io/bash);
           popd;
-      - run: npm install --legacy-peer-deps
-      - run: >
-          pushd octoductor/ui;
-          npm install;
-          CI=false npx react-scripts build;
-          popd;
       - run: >
           npm install
           npm run build
