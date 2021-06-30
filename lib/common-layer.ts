@@ -13,7 +13,7 @@ export class CommonLayer extends LayerVersion {
                 'bash', '-c', `
                 pip install -r requirements.txt -t /asset-output/python/lib/python3.7/site-packages && 
                 cp -au . /asset-output/python/lib/python3.7/site-packages &&
-                rm -r /asset-output/python/lib/python3.7/site-packages/ui
+                rm -rf /asset-output/python/lib/python3.7/site-packages/ui
                 `,
               ],
             },

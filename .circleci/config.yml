@@ -5,6 +5,8 @@ jobs:
   build:
     machine:
       image: ubuntu-1604:202007-01
+    environment:
+      CDK_OUTDIR: /home/circleci/project/cdk.out
     steps:
       - checkout
       - run: python --version
@@ -17,10 +19,10 @@ jobs:
           popd;
       - run: npm install
       - run: npm run build
-      - run: npm test
+      - run: npm run test
       - run: npx cdk synth > template.yaml
-      - run: bash <(curl -s https://codecov.tools.a.intuit.com/bash) -cv -f octoductor/coverage.xml -F python
-      - run: bash <(curl -s https://codecov.tools.a.intuit.com/bash) -cv -f .coverage/*.json -F typescript,node
+      - run: bash <(curl -s https://codecov.io/bash) -cv -f octoductor/coverage.xml -F python
+      - run: bash <(curl -s https://codecov.io/bash) -cv -f .coverage/*.json -F typescript,node
   release:
     docker:
       - image: cimg/python:3.7.9-node
