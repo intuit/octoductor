@@ -5,7 +5,6 @@ from moto import mock_secretsmanager
 import unittest
 import json
 import boto3
-from scoring import repo_crawler
 from unittest.mock import patch, Mock
 from unittest import mock
 from moto import mock_secretsmanager

@@ -14,12 +14,10 @@ def handler(event, context):
     scored_clients = CollectorResponse.from_dict(event)
 
     base_url, request_headers = get_gateway()
-
     request_headers['charset'] = 'utf-8'
 
     resource = "slackconvo"
     slack_url = f"{base_url}/{resource}"
-
     slack_results_to_clients(scored_clients, slack_url, request_headers)
 
     return json.loads(scored_clients.to_json())

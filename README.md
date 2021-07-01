@@ -51,7 +51,6 @@ Detailed Structure:
 - `bin`: where CDK app is created. Likely no changes here will ever be needed
 - `lib`: where CDK Constructs are added to support infrastructure needs of Octoductor
   - `constructs`: where generic and reusable Constructs are stored
-  - `data`: anything needed to support the data API connected to AWS Gateway
   - `deployment`: main CDO Stack deployed as part of the CDK app in the `bin` folder
   - `evaluation`: where CDK Constructs to support evaluation workflow and crawlers are stored
   - `model`: common interfaces
@@ -59,7 +58,6 @@ Detailed Structure:
   - `utils`: common utilities shared across Constructs
 - `octoductor`: where the entire functionality / application logic resides.
   - `common`: functionality tied to common layer shared across the entire application
-  - `data`: functionality tied to data API - database setup and data APIs
   - `github`: github application logic
   - `onboarding`: functionality tied to onboarding flow
   - `scoring`: functionality tied to evaluation flow and crawlers (**Note: this is where the majority of contribution should happen**)

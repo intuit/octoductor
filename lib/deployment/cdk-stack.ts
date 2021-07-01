@@ -8,12 +8,8 @@ import { join } from 'path';
 import { CommonInfra } from "../common-infra";
 import { HealthCheck } from "../constructs/health-check";
 import { PublicGateway } from "../constructs/public-gateway";
-import { ServerlessAurora } from "../constructs/serverless-aurora";
-import { ClusterConnection } from '../cluster-connection';
 import { setStepFunctionEndpoint } from "../constructs/gateways-helper";
 import { ConfigurationParameters } from "../configuration-parameters";
-import { Data } from "../data/data";
-import { Setup } from "../data/setup";
 import { GitHub } from "../onboarding/github";
 import { Onboarding } from "../onboarding/onboarding";
 import { OnboardingStateMachine } from "../onboarding/onboarding-workflow";
@@ -67,16 +63,5 @@ export class OctoductorStack extends Stack {
       generator.evaluator('sample-one'),
       generator.evaluator('sample-two')
     ]), 'evaluation', apiRole);
-
-
-    const db = new ServerlessAurora(this, 'aurora', 'octoductor-' + common.params.env, common.params.vpc, common.params.isProduction(false, true))
-    const setup = new Setup(this, 'db-setup', common.params.vpc, db.secret, db.clusterArn(this), db.defaultDB)
-    db.executeStateMachinOnClusterCreation('ExecuteStateMachine', setup);
-
-    const data = new Data(this, 'data-api', new ClusterConnection(db.clusterArn(this), setup.write, db.defaultDB), common.params.vpc, common.securityGroup);
-    publicGW.root.addResource('data').addProxy({
-      defaultIntegration: new LambdaIntegration(data),
-      anyMethod: true
-    });
   }
 }

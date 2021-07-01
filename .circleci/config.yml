@@ -33,9 +33,7 @@ jobs:
       - run: npm run build
       - run: npm version --no-git-tag-version --allow-same-version $(CIRCLE_TAG)
       - run: npm pack
-      - run: pip install --upgrade twine setuptools wheel
-      - run: cd octoductor
-      - run: python setup.py sdist bdist_wheel
+      - run: npm publish
 workflows:
   version: 2
   build-n-release:
