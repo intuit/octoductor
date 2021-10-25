@@ -8,7 +8,7 @@
 
 ## Summary
 
-In an effort to systematically measure and gauge engineering readiness, we have identified a path to draw a clear baseline indicating that our products are reliable, consistent, and dependable. That path represents a core guardrail for engineering practices, providing crucial understanding of what it means to be production ready. The core component is the capability to orchestrate workflows for requirement checks. We have implemented a framework to automate capturing and tracking these requirements. To minimize disruption, we put the developer at the center of our solution and integrate directly into their main tool, Github, which is this the bread and butter of the developer’s day-to-day workflow.
+In an effort to systematically measure and gauge engineering readiness, we have identified a path to draw a clear baseline indicating that our products are reliable, consistent, and dependable. That path represents a core guardrail for engineering practices, providing crucial understanding of what it means to be production ready. The core component is the capability to orchestrate workflows for requirement checks. We have implemented a framework to automate capturing and tracking these requirements. To minimize disruption, we put the developer at the center of our solution and integrate directly into their main tool, GitHub, which is this the bread and butter of the developer’s day-to-day workflow.
 
 We leverage GitHub’s built-in support for creating applications, which can react to any update on onboarded repositories as well as issue checks, which provide a feedback loop right on the developer’s pull request. Usually, for every quality check a user would have to onboard to a new GitHub application. Contrary, we have implemented an orchestrated workflow, which allows for a single onboarding process, but at the same time allows for adding unlimited checks in the backend as we implement them.
 
@@ -33,16 +33,16 @@ These steps are currently quite manual and will be simplified / automated where 
 
 ## Future Work
 In the near future, there are several improvements that will be made:
-- Reduce number of input parameters to the CDK Stack (eg. make Slack application optional, etc.)
-- Automate CDK Stack pre-requisites where possible (eg. automatically provision hosted zone / domain, etc.)
+- Reduce number of input parameters to the CDK Stack (e.g. make Slack application optional, etc.)
+- Automate CDK Stack pre-requisites where possible (e.g. automatically provision hosted zone / domain, etc.)
 - Improve automation of CDK Stack deployment, which now needs to happen manually from local
 - Improve information passed via evaluation flow to align more closely to GitHub application API
 
 If more items come to mind, feel free to make suggestions and open GitHub issues.
 
 # Project Structure
-The infrastucture is setup via AWS CDK using the TypeScript language.
-Application logic is usuallly encapsulated in an AWS Lamdba with each module being an AWS CDK project in itself. The rational is that they can be tested and deployed in isolation. 
+The infrastucture is setu p via AWS CDK using the TypeScript language.
+Application logic is usually encapsulated in an AWS Lamdba with each module being an AWS CDK project in itself. The rationale is that they can be tested and deployed in isolation. 
 All the infrastructure needed to support the overall application should be exposed via a `Construct` in the `lib` directory, whereas everything needed to support the logic / functionality and testing of the application belongs into the `octoductor` folder.
 
 Generic `Constructs` will be bundled in the [lib](octoductor/lib) module, all components are wired together in the [lib/deployment](octoductor/lib/deployment) module.
@@ -128,7 +128,7 @@ Inside the octoductor root folder:
 
 Finally, to deploy to your AWS account:
 1. obtain valid aws credentials in your `~/.aws/credentials` file
-2. run `cdk bootstrap --profile <enter your aws profile name>`
+2. run `cdk bootstrap --profile <enter your A profile name>`
 3. run `cdk deploy --profile <> OctoductorStack` and provide the following parameters via the `--parameters <parameterKey>=<parameterValue>` option
 
 ```text
