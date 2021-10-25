@@ -118,7 +118,7 @@ Pre-steps:
 1. Setup a certificate for your domain in AWS Certificate Manager
 2. Setup an AWS Route 53 hosted zone
 3. Setup your Slack application / server
-4. Store your secrets in AWS Secret Manager (Github secrets and Slack secrets)
+4. Store your secrets in AWS Secret Manager (GitHub secrets and Slack secrets)
 
 Inside the octoductor root folder:
 1. run `make clean`
@@ -128,7 +128,7 @@ Inside the octoductor root folder:
 
 Finally, to deploy to your AWS account:
 1. obtain valid aws credentials in your `~/.aws/credentials` file
-2. run `cdk bootstrap --profile <enter your A profile name>`
+2. run `cdk bootstrap --profile <enter your AWS profile name>`
 3. run `cdk deploy --profile <> OctoductorStack` and provide the following parameters via the `--parameters <parameterKey>=<parameterValue>` option
 
 ```text
@@ -144,7 +144,7 @@ Finally, to deploy to your AWS account:
 - SlackSecretArn: AWS Secret Manager ARN for the Slack application secrets (expecting 'slackToken')
 - SlackSigningSecretArn: AWS Secret Manager ARN for the Slack signing secret - ingress traffic (expecting 'secret')
 - GithubDomain: your GitHub domain (eg `https://github-dev.foobar.com/api/v3`)
-- GithubApplicationId: your Github application ID
+- GithubApplicationId: your GitHub application ID
 ```
 
 
