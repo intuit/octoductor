@@ -41,7 +41,7 @@ In the near future, there are several improvements that will be made:
 If more items come to mind, feel free to make suggestions and open GitHub issues.
 
 # Project Structure
-The infrastucture is setu p via AWS CDK using the TypeScript language.
+The infrastucture is set up via AWS CDK using the TypeScript language.
 Application logic is usually encapsulated in an AWS Lamdba with each module being an AWS CDK project in itself. The rationale is that they can be tested and deployed in isolation. 
 All the infrastructure needed to support the overall application should be exposed via a `Construct` in the `lib` directory, whereas everything needed to support the logic / functionality and testing of the application belongs into the `octoductor` folder.
 
